@@ -18,7 +18,8 @@
 						placeholder="Въведете име за контакт" />
 				</div>
 				<div class="mt20-mb10">
-					<label for="username">Потребителско име</label> <input type="text"
+					<label for="username">Потребителско име</label> 
+					<input type="text"
 						name="username" id="username"
 						placeholder="Въведете потребителско име" />
 				</div>
