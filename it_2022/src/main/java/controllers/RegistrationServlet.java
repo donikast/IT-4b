@@ -53,11 +53,13 @@ public class RegistrationServlet extends HttpServlet {
 		}
 		else {
 			User user = new User(personalName,username,password);
-			if(collection.addUser(user)) {
+			if(collection.getUserByUsername(username)==null) {
+				
+				collection.addUser(user);
 				out.print("<html><body><p>Успешно добавен потребител</p></body></html>");
 				
-				RequestDispatcher rd = request.getRequestDispatcher("/LoginPage.jsp");
-				rd.forward(request, response);
+				response.sendRedirect("login");
+			
 			}
 			else {
 				out.print("<html><body><p>Потребителското име е заето</p></body></html>");
