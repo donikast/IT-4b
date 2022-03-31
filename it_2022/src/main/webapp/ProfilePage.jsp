@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="models.User" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +10,9 @@
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+<% User user = (User)request.getAttribute("loggedUser"); %>
+
 	<header></header>
 	<div class="content">
 		<div>
@@ -16,7 +21,7 @@
 			</div>
 			<div class="profile-info-container">
 				<h2>Профилна информация</h2>
-				<p>Име: Иван Иванов Иванов</p>
+				<p>Име: <%= user.getPersonalName() %></p>
 				<p>Професия: студент</p>
 				<p>Описание: Известен факт е, че читателят обръща внимание на
 					съдържанието, което чете, а не на оформлението му. Свойството на
