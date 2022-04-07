@@ -8,27 +8,25 @@
 <jsp:include page="shared/head.jsp"/>
 
 <body>
-<!--  
-<jsp:useBean id="loggedUser" class="models.User" scope="request" />
-<jsp:setProperty property="personalName" name="loggedUser" />
-<jsp:setProperty property="id" name="loggedUser" />
-<jsp:getProperty property="personalName" name="loggedUser" />-->
-
 <% User user = (User)request.getAttribute("loggedUser"); %>
 
 <jsp:include page="shared/header.jsp"/>
 
 	<div class="content">
+	
+	<form action="user" method="post">
 		<div>
 			<div class="profile-image-container">
 				<img src="images/male.svg" />
 			</div>
 			<div class="profile-info-container">
 				<h2>Профилна информация</h2>
-				<p>Име: <%= user.getPersonalName() %></p>
-				<p>Професия: <%= user.getJobTitle() %></p>
-				<p>Описание: <%= user.getDescription() %></p>
-
+				<p>Име:</p>
+				<input type="text" name="personal-name" value="<%= user.getPersonalName() %>" />
+				<p>Професия: </p>
+				<input type="text" name="job-title" value="<%= user.getJobTitle() %>" />
+				<p>Описание: </p>
+				<input type="text" name="description" value="<%= user.getDescription() %>" />
 			</div>
 		</div>
 		<h2>Умения</h2>
@@ -36,14 +34,15 @@
 		<div class="skills-container">
 			<div class="skills-container-element">
 			
-			<% for(Skill skill:user.getProfessionalSkills()) { %>
+			<% int i=0;
+			for(Skill skill:user.getProfessionalSkills()) { %>
 				<div>
-					<label><%= skill.getSkillName() %></label>
-					<div class="outer-progress">
-						<div class="inner-progress" style="width: <%= skill.getSkillLevel() %>%"></div>
-					</div>
+				<input type="text" name="prof-skill-name<%=i%>" value="<%= skill.getSkillName() %>" />
+				<input type="range" name="prof-skill-value<%=i%>" value="<%= skill.getSkillLevel() %>" 
+				min="0" max="100" step="10" /> 
 				</div>
-			<% } %>
+			<% i++;
+			} %>
 			</div>
 
 			<div class="skills-container-element">
@@ -65,12 +64,12 @@
 			<div class="skills-container-element">
 				<div>
 					<label>E-mail</label>
-					 <p class="profile-info-in-orange"><%= user.getEmail() %></p>
+					<input type="text" name="email" value="<%= user.getEmail() %>" />				 
 				</div>
 
 				<div>
 					<label>Град</label>
-					 <p class="profile-info-in-orange"><%= user.getAddress().getCity() %></p>
+					<input type="text" name="city" value="<%= user.getAddress().getCity() %>" />				 
 				</div>
 
 			</div>
@@ -78,16 +77,16 @@
 			<div class="skills-container-element">
 				<div>
 					<label>Телефон</label>
-					 <p class="profile-info-in-orange"><%= user.getPhone() %></p>
-					 
+					<input type="text" name="phone" value="<%= user.getPhone() %>" />				  
 				</div>
 
 				<div>
 					<label>Улица</label>
-					 <p class="profile-info-in-orange"><%= user.getAddress().getStreet() %></p>				 
+					<input type="text" name="street" value="<%= user.getAddress().getStreet() %>" /> 			 
 				</div>			
 			</div>
 		</div>
+		</form>
 	</div>
 <jsp:include page="shared/footer.jsp"/>
 
