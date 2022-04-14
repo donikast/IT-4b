@@ -42,10 +42,8 @@ public class LoginServlet extends HttpServlet {
 			
 			User loggedUser = collection.getUserByUsername(username);
 			
-			request.setAttribute("loggedUser", loggedUser);
-
-			RequestDispatcher rd = request.getRequestDispatcher("/EditProfilePage.jsp");
-			rd.forward(request, response);
+			response.sendRedirect("user?id="+loggedUser.getId()+"&action=edit");
+	
 		}
 		
 		else {
