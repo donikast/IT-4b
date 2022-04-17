@@ -8,13 +8,16 @@
 <jsp:include page="shared/head.jsp"/>
 
 <body>
-<% User user = (User)request.getAttribute("loggedUser"); %>
+<% User user = (User)session.getAttribute("loggedUser"); %>
 
 <jsp:include page="shared/header.jsp"/>
 
 	<div class="content">
 	
 	<form action="user" method="post">
+	
+	<input type="hidden" name="id" value="<%= user.getId() %>" />
+	
 		<div>
 			<div class="profile-image-container">
 				<img src="images/male.svg" />
@@ -50,8 +53,8 @@
 			<% int j=0;
 			for(Skill skill:user.getPersonalSkills()) { %>
 				<div>
-				<input type="text" name="prof-skill-name<%=j%>" value="<%= skill.getSkillName() %>" />
-				<input type="range" name="prof-skill-value<%=j%>" value="<%= skill.getSkillLevel() %>" 
+				<input type="text" name="personal-skill-name<%=j%>" value="<%= skill.getSkillName() %>" />
+				<input type="range" name="personal-skill-value<%=j%>" value="<%= skill.getSkillLevel() %>" 
 				min="0" max="100" step="10" /> 
 				</div>
 			<% j++;
