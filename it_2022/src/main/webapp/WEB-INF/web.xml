@@ -48,4 +48,28 @@
   	<description></description>
   	<servlet-class>controllers.LogoutServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>CookieServlet</servlet-name>
+  	<display-name>CookieServlet</display-name>
+  	<description></description>
+  	<servlet-class>controllers.CookieServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ErrorHandlerServlet</servlet-name>
+  	<display-name>ErrorHandlerServlet</display-name>
+  	<description></description>
+  	<servlet-class>controllers.ErrorHandlerServlet</servlet-class>
+  </servlet>
+<error-page>
+<error-code>404</error-code>
+<location>/error</location>
+</error-page>
+<error-page>
+<error-code>403</error-code>
+<location>/error</location>
+</error-page>
+<error-page>
+<error-code>500</error-code>
+<location>/error</location>
+</error-page>
 </web-app>
