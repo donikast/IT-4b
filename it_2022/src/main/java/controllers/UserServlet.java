@@ -82,6 +82,7 @@ public class UserServlet extends HttpServlet {
 			int skillValue = Integer.parseInt(request.getParameter("personal-skill-value"+i));
 			updatedUser.getPersonalSkills().get(i).setSkillLevel(skillValue);
 		}
+		collection.updateXMLFile();
 		
 		response.sendRedirect("user?id="+updatedUser.getId());
 		
